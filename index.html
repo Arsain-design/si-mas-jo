@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | SI MAS JO</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="login-container">
+    <img src="assets/logo.png" alt="Logo Puskesmas Wajo" class="logo">
+    <h1>🔒 Login</h1>
+    <p>Masukkan username dan password</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Masuk</button>
+    </form>
+
+    <footer class="footer">
+      &copy; 2025 Si Mas Jo
+    </footer>
+  </div>
+
+  <script>
+    function showNotification(message, type = "info") {
+      const notif = document.createElement("div");
+      notif.className = `notification ${type}`;
+
+      const iconSpan = document.createElement("span");
+      iconSpan.className = "icon";
+      notif.appendChild(iconSpan);
+      notif.appendChild(document.createTextNode(message));
+
+      document.body.appendChild(notif);
+      notif.offsetHeight;
+      notif.classList.add("show");
+
+      setTimeout(() => {
+        notif.classList.add("fade-out");
+        notif.addEventListener("transitionend", () => notif.remove());
+      }, 3000);
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (email === "puskesmaswajo@gmail.com" && password === "integr4s1#2025") {
+        showNotification("Login berhasil", "success");
+        setTimeout(() => {
+          window.location.href = "https://sites.google.com/view/simasjo/beranda?authuser=0";
+        }, 2000);
+      } else {
+        showNotification("Email atau password salah", "error");
+      }
+    });
+  </script>
+</body>
+</html>

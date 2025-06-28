@@ -1,0 +1,381 @@
+/* ================================
+   Reset & Global Box Model
+   ================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+   Root Variables
+   ================================ */
+:root {
+  --primary-green: #2ecc71;
+  --dark-green: #27ae60;
+  --light-green: #ecf9f1;
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --bg-light: #f5f8fa;
+  --card-bg: #ffffff;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --header-height: 60px;
+  --sidebar-width: 220px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================================
+   Global Styles
+   ================================ */
+body, html {
+  height: 100%;
+  font-family: var(--font-family);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ================================
+   Auth Container Styles
+   ================================ */
+body {
+  background: linear-gradient(to bottom right, #e0f2f1, #ecf9f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-container {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  border-top: 6px solid #4caf50;
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+}
+
+h1 {
+  color: #2e7d32;
+  margin-bottom: 0.4em;
+  font-size: 1.8em;
+}
+
+p {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 1.5em;
+}
+
+/* ================================
+   Forms
+   ================================ */
+form input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #cfd8dc;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: 0.2s border ease-in-out;
+}
+
+form input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+form button:hover {
+  background-color: #43a047;
+}
+
+form button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.4);
+}
+
+form button::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.5s ease, opacity 0.8s ease;
+}
+
+form button.ripple::after {
+  transform: scale(12);
+  opacity: 1;
+}
+
+/* ================================
+   Extra Links
+   ================================ */
+.extra-links {
+  margin-top: 1.2rem;
+  font-size: 0.9em;
+}
+
+.extra-links a {
+  color: #0277bd;
+  text-decoration: none;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   Footer
+   ================================ */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+  margin-top: 2rem;
+}
+
+/* ================================
+   Notification Styles
+   ================================ */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50px);
+  min-width: 300px;
+  max-width: 90%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  z-index: 1000;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.notification.success {
+  background-color: rgba(76, 175, 80, 0.9);
+}
+
+.notification.error {
+  background-color: rgba(244, 67, 54, 0.9);
+}
+
+.notification.info {
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.notification .icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.notification.success .icon::before {
+  content: "\2713";
+  color: #fff;
+}
+
+.notification.error .icon::before {
+  content: "\26A0";
+  color: #fff;
+}
+
+.notification.info .icon::before {
+  content: "\24D8";
+  color: #fff;
+}
+
+.notification.fade-out {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50px);
+}
+
+
+/* ================================
+   Buttons with Ripple Effect
+   ================================ */
+button.ripple {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary-green);
+  color: var(--text-light);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  display: inline-block;
+  text-align: center;
+}
+
+button.ripple:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-1px);
+}
+
+button.ripple:active {
+  transform: translateY(0);
+}
+
+button.ripple .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  animation: ripple-animation 0.6s linear;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   Table Styles
+   ================================ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead tr {
+  background-color: var(--primary-green);
+}
+
+table thead th {
+  color: var(--text-light);
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: 600;
+}
+
+table tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--light-green);
+}
+
+table tbody tr:hover {
+  background-color: #d0efd7;
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+  .content {
+    margin-left: 200px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.25rem;
+  }
+  .header p {
+    font-size: 0.8rem;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+  }
+  .sidebar a {
+    flex: 1;
+    justify-content: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .content {
+    margin-left: 0;
+    margin-top: calc(var(--header-height) + 60px);
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.8rem;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  .card {
+    padding: 1rem;
+  }
+  button.ripple {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+  table thead th,
+  table tbody td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
